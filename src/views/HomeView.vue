@@ -1,9 +1,13 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Form from '@/components/Form.vue'
+import Landing from '@/components/Landing.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Landing></Landing>
+    <Form></Form>
   </main>
 </template>
+
+
