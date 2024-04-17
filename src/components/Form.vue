@@ -1,6 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import vector from '@/assets/icons/Vector.svg';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 const data = ref(null);
 
 onMounted(async () => {
@@ -15,12 +18,16 @@ onMounted(async () => {
     }
     console.log(data.value);
 });
+
+function redirectToPlanner(plannerId) {
+    router.push(`/planner/${plannerId}`);
+}
 </script>
 
 <template>
     <div>
         <h4>Derniers itinéraires</h4>
-        <div class="list-history" v-for="(item) in data">
+        <div class="list-history" v-for="(item) in data" @click="redirectToPlanner(item.id)">
             <p>{{ item.prompt }}</p>
             <img :src="vector" alt="icon-voir-pls" />
         </div>
@@ -33,15 +40,17 @@ onMounted(async () => {
     border: 1px solid #6D695E;
     border-radius: 8px;
     width: 90vw;
-    padding: 4px ;
+    padding: 4px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
 }
-p{
+
+p {
     margin: 4px;
 }
-h4{
+
+h4 {
     color: #6D695E;
 }
 </style>

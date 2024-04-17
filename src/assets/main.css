@@ -1,21 +1,24 @@
 :root {
   --primary: #2f2e2b;
   --secondary: #ffffff;
-  --tertiary: #6D695E;
-  --accent: #CECECE;
+  --tertiary: #6d695e;
+  --accent: #cecece;
 }
 @font-face {
-  font-family: 'inter';
-  src: url('./fonts/Inter-Regular.ttf') format('woff'),
+  font-family: "inter";
+  src: url("./fonts/Inter-Regular.ttf") format("woff");
 }
 @font-face {
-  font-family: 'lora';
-  src: url('./fonts/Lora-Bold.ttf') format('woff'),;
+  font-family: "lora";
+  src: url("./fonts/Lora-Bold.ttf") format("woff");
 }
 
-body{
-    background-color: var(--primary);
-    color: var(--secondary);
-    font-family: 'inter', sans-serif;
-    padding: 0 8px;
+body {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: "inter", sans-serif;
+  padding: 0 8px;
+}
+#map {
+  height: 100vh;
 }

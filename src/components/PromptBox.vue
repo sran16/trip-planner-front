@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const prompt = ref('');
+const router = useRouter();
 
 const sendRequest = async () => {
   try {
@@ -14,15 +16,17 @@ const sendRequest = async () => {
     });
     const data = await response.json();
     console.log(data);
+    return data.id;
   } catch (error) {
     console.error(error);
   }
 };
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
-  sendRequest();
+  const id = await sendRequest(); 
   console.log(prompt.value);
+  router.push(`/planner/${id}`); 
 };
 
 </script>
@@ -47,28 +51,33 @@ const handleSubmit = (event) => {
   height: 14vh;
   width: 80vw;
   margin-bottom: 16px;
-
+  color: #ffffff;
 }
-.box{
+
+.box {
   display: flex;
   justify-content: center;
 }
-button{
+
+button {
   border-radius: 8px;
   color: #6D695E;
   margin-right: 16px;
   padding: 8px 16px;
 }
-.button-submit{
+
+.button-submit {
   background-color: #6D695E;
   color: #CECECE;
 }
-.button-exemple{
+
+.button-exemple {
   background-color: transparent;
   border: 1px solid #6D695E;
   color: #ffffff;
 }
-.buttons{
+
+.buttons {
   display: flex;
   justify-content: center;
 }
