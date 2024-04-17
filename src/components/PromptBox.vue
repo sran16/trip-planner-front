@@ -1,0 +1,75 @@
+<script setup>
+import { ref } from 'vue';
+
+const prompt = ref('');
+
+const sendRequest = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/v1/planners', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ prompt: prompt.value })
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  sendRequest();
+  console.log(prompt.value);
+};
+
+</script>
+
+<template>
+  <div class="box">
+    <form @submit="handleSubmit">
+      <input type="text" id="prompt" v-model="prompt" required>
+      <div class="buttons">
+        <button class="button-submit" type="submit">C'est parti</button>
+        <button class="button-exemple" type="submit">Voir un exemple</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<style scoped>
+#prompt {
+  background-color: #242321;
+  border: 1px solid #6D695E;
+  border-radius: 17px;
+  height: 14vh;
+  width: 80vw;
+  margin-bottom: 16px;
+
+}
+.box{
+  display: flex;
+  justify-content: center;
+}
+button{
+  border-radius: 8px;
+  color: #6D695E;
+  margin-right: 16px;
+  padding: 8px 16px;
+}
+.button-submit{
+  background-color: #6D695E;
+  color: #CECECE;
+}
+.button-exemple{
+  background-color: transparent;
+  border: 1px solid #6D695E;
+  color: #ffffff;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+</style>

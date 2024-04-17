@@ -4,9 +4,18 @@
   --tertiary: #6D695E;
   --accent: #CECECE;
 }
+@font-face {
+  font-family: 'inter';
+  src: url('./fonts/Inter-Regular.ttf') format('woff'),
+}
+@font-face {
+  font-family: 'lora';
+  src: url('./fonts/Lora-Bold.ttf') format('woff'),;
+}
 
 body{
     background-color: var(--primary);
     color: var(--secondary);
-    
+    font-family: 'inter', sans-serif;
+    padding: 0 8px;
 }
