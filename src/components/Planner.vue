@@ -23,25 +23,24 @@ onMounted(async () => {
 
 const filteredData = computed(() => {
     if (!data.value) {
-        return [];
+        return null;
     }
     const id = route.params.id;
     const planner = data.value.find(item => item.id === id);
-    return planner ? planner.itinerary : [];
+    return planner || null;
 });
 </script>
 <template>
     <div>
         <h4>Itinéraire</h4>
-        <div class="list-history" v-for="(item) in data" >
-            <p>{{ item.prompt }}</p>
+        <div v-if="filteredData">
+            <p>{{ filteredData.prompt }}</p>
+            <ul>
+                <li v-for="item in filteredData.itinerary" :key="item.name">
+                    <h2>{{ item.name }}</h2>
+                    <p>{{ item.description }}</p>
+                </li>
+            </ul>
         </div>
-        <ul>
-            <li v-for="item in filteredData" :key="item.name">
-                {{ item.prompt }}
-                <h2>{{ item.name }}</h2>
-                <p>{{ item.description }}</p>
-            </li>
-        </ul>
     </div>
 </template>
