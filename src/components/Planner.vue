@@ -2,6 +2,8 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import update from '@/assets/icons/update.svg';
+import UpdatePrompt from '@/components/UpdatePrompt.vue';
+
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 const data = ref(null);
@@ -38,7 +40,7 @@ const filteredData = computed(() => {
         <div v-if="filteredData">
             <div class="prompt-update">
                 <h4>{{ filteredData.prompt }}</h4>
-                <div class="update-icon">
+                <div class="update-icon" @click="showUpdatePrompt">
                     <img class="img-update" :src="update" alt="icon-update" />
                 </div>
             </div>

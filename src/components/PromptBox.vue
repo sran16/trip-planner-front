@@ -1,4 +1,5 @@
 <script setup>
+
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
@@ -24,9 +25,9 @@ const sendRequest = async () => {
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  const id = await sendRequest(); 
+  const id = await sendRequest();
   console.log(prompt.value);
-  router.push(`/planner/${id}`); 
+  router.push(`/planner/${id}`);
 };
 
 </script>
@@ -34,10 +35,11 @@ const handleSubmit = async (event) => {
 <template>
   <div class="box">
     <form @submit="handleSubmit">
-      <input type="text" id="prompt" v-model="prompt" required>
+      <textarea type="text" id="prompt" v-model="prompt" required></textarea>
       <div class="buttons">
         <button class="button-submit" type="submit">C'est parti</button>
-        <button class="button-exemple" >Voir un exemple</button>
+        <button class="button-exemple" @click="router.push(`/planner/34cc68bd-132e-4a58-8512-d3e4b25b4cd0`)">Voir un
+          exemple</button>
       </div>
     </form>
   </div>
