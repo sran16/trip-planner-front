@@ -3,12 +3,13 @@ import { ref, onMounted } from 'vue';
 import vector from '@/assets/icons/Vector.svg';
 import { useRouter } from 'vue-router';
 
+const baseURL = import.meta.env.VITE_APP_BASE_URL;
 const router = useRouter();
 const data = ref(null);
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://localhost:3000/v1/planners');
+        const response = await fetch(`${baseURL}/v1/planners`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -39,8 +40,8 @@ function redirectToPlanner(plannerId) {
     background-color: #242321;
     border: 1px solid #6D695E;
     border-radius: 8px;
-    width: 90vw;
-    padding: 4px;
+    width: 85vw;
+    padding:  8px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;

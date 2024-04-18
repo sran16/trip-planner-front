@@ -1,9 +1,9 @@
 <script setup>
-import landing_icon  from "@/assets/icons/Landing_icon.png";
+
 </script>
 <template>
     <section>
-        <img :src="landing_icon" alt="landing_icon" />
+        <img src="@/assets/icons/Landing_icon.png" alt="icon-voir-pls" />
         <h1>Planificateur de voyage</h1>
         <p>généreé par IA</p>
     </section>
@@ -16,12 +16,13 @@ section {
     padding-top: 10%;
     text-align: center;
     padding: 16px;
-    margin-top: 15%;
+    margin-top: 20%;
 }
 h1 {
     font-family: 'lora', sans-serif;
     font-size: 32px;
-    margin: 8px 0;
+    width: 60vw;
+    margin: 16px 0;
 
 }
 p{

@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
+const baseURL = import.meta.env.VITE_APP_BASE_URL;
 const prompt = ref('');
 const router = useRouter();
 
 const sendRequest = async () => {
   try {
-    const response = await fetch('http://localhost:3000/v1/planners', {
+    const response = await fetch(`${baseURL}/v1/planners`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const handleSubmit = async (event) => {
       <input type="text" id="prompt" v-model="prompt" required>
       <div class="buttons">
         <button class="button-submit" type="submit">C'est parti</button>
-        <button class="button-exemple" type="submit">Voir un exemple</button>
+        <button class="button-exemple" >Voir un exemple</button>
       </div>
     </form>
   </div>
