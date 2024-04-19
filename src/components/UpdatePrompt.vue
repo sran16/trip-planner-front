@@ -21,6 +21,7 @@ const sendRequest = async () => {
         const id = router.currentRoute.value.params.id;
 
         // Send a PATCH request to update the planner with the new prompt
+
         const response = await fetch(`${baseURL}/v1/planners/${id}`, {
             method: 'PATCH',
             headers: {
@@ -31,7 +32,9 @@ const sendRequest = async () => {
 
         const data = await response.json();
         // Return the updated planner ID
+
         return data.id;
+
     } catch (error) {
         console.error(error);
     }
@@ -40,7 +43,6 @@ const sendRequest = async () => {
 // Function to handle the form submission
 const handleSubmit = async (event) => {
 
-    // Prevent the default form submission behavior
     event.preventDefault();
 
     // Emit the 'update-start' event
