@@ -2,20 +2,19 @@
 import Landing from '@/components/Landing.vue';
 import PlannerList from '@/components/PlannerList.vue';
 import PromptBox from '@/components/PromptBox.vue';
-import Loading from '@/components/Loading.vue';
+// import Loading from '@/components/Loading.vue';
 
 
 
 </script>
 
 <template>
-  <main>
+  <main >
+    <!-- <Loading /> -->
     <Landing />
     <PromptBox />
     <PlannerList />
-
-
-  </main :class="{ 'isLoading': isLoading }">
+  </main>
 </template>
 <style scoped>
 main {
@@ -27,6 +26,6 @@ main {
 }
 
 main.isLoading {
-    display: none;
+  display: none;
 }
 </style>

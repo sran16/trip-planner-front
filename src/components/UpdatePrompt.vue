@@ -5,6 +5,8 @@ const baseURL = import.meta.env.VITE_APP_BASE_URL;
 const prompt = ref('');
 const router = useRouter();
 
+const emit = defineEmits(['update-start', 'update-end']);
+
 const sendRequest = async () => {
     try {
         const id = router.currentRoute.value.params.id;
@@ -25,7 +27,13 @@ const sendRequest = async () => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
+
+    emit('update-start');
+
     const id = await sendRequest();
+
+    emit('update-end');
+
     console.log(prompt.value);
     router.push(`/planner/${id}`).then(() => router.go());
 };

@@ -46,7 +46,7 @@ const handleSubmit = async (event) => {
       <textarea type="text" id="prompt" v-model="prompt" required></textarea>
       <div class="buttons">
         <button class="button-submit" type="submit">C'est parti</button>
-        <button class="button-exemple" @click="router.push(`/planner/4fc9fcde-486a-4ca1-b8ef-0ef1d676648d`)">Voir un
+        <button class="button-exemple" @click="router.push(`/planner/ca15d2cb-7a5f-446e-a3df-cc3261e91912`)">Voir un
           exemple</button>
       </div>
     </form>

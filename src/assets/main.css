@@ -37,6 +37,10 @@ body {
 textarea#prompt {
   text-align: start;
   padding: 12px;
+  resize: none;
+}
+textarea#prompt:focus-visible {
+  border: 1px solid red;
 }
 
 .box {

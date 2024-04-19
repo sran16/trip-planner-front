@@ -1,11 +1,13 @@
 <script setup>
+console.log('Loading component is visible');
 </script>
 <template>
-    <div class="row ">
+    <div class="row">
         <div class="span">
             <div class="location_indicator">
             </div>
         </div>
+        <p>Votre itinéraire est en cours d'élaboration..</p>
     </div>
 </template>
 <style scoped>
@@ -17,29 +19,40 @@
 
 
 .row {
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
     text-align: center;
-    padding: 10px 0;
+    padding: 40vh 0px;
     background-color: #242321;
     display: flex;
     justify-content: center;
-    align-items: center;
-
+    flex-direction: column;
 }
 
 .span {
     width: 100vw;
     height: 15vh;
-    padding: 50vh 0;
+}
+
+p {
+    color: #6D695E;
+    font-size: 1rem;
+    font-weight: 200;
+    font-family: 'inter', sans-serif;
+
 }
 
 
-/*Location indicator */
+/*Location indicator  icon */
+
 .location_indicator {
     position: relative;
     z-index: 1;
-    left: -9px;
+    left: -22px;
 }
 
 .location_indicator:before,
@@ -63,13 +76,15 @@
 
 .location_indicator:after {
     width: 80px;
-        height: 10px;
-        border-radius: 100%;
-        left: 46%;
-        background-color: #6D695E;
-        top: 9vh;
-        z-index: -1;
+    height: 10px;
+    border-radius: 100%;
+    left: 46%;
+    background-color: #6D695E;
+    top: 9vh;
+    z-index: -1;
+
 }
+
 
 @-webkit-keyframes mapping {
     0% {

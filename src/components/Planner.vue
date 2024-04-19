@@ -17,8 +17,9 @@ const showUpdatePrompt = ref(false);
 const isLoading = ref(false);
 
 onMounted(async () => {
+    isLoading.value = true;
     try {
-        isLoading.value = true;
+
         console.log(isLoading.value);
         const response = await fetch(`${baseURL}/v1/planners/${id}`);
         if (!response.ok) {
@@ -31,7 +32,6 @@ onMounted(async () => {
         console.error(error);
     } finally {
         isLoading.value = false;
-        
     }
     console.log(data.value);
 });
@@ -65,7 +65,7 @@ const updateData = (updatedData) => {
                     <img class="img-update" :src="history" alt="icon-history" @click="router.push(`/`)" />
                 </div>
             </div>
-            <UpdatePrompt v-if="showUpdatePrompt" @update="updateData" />
+            <UpdatePrompt v-if="showUpdatePrompt" @update-start="isLoading = true" @update-end="isLoading = false" />
             <h5>Itinéraire</h5>
             <ul>
                 <li v-for="item in filteredData.itinerary" :key="item.name">
