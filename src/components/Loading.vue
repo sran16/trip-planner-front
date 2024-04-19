@@ -1,5 +1,5 @@
 <script setup>
-console.log('Loading component is visible');
+
 </script>
 <template>
     <div class="row">

@@ -19,7 +19,6 @@ const sendRequest = async () => {
       body: JSON.stringify({ prompt: prompt.value })
     });
     const data = await response.json();
-    console.log(data);
     return data.id;
   } catch (error) {
     console.error(error);
@@ -31,7 +30,6 @@ const sendRequest = async () => {
 const handleSubmit = async (event) => {
   event.preventDefault();
   const id = await sendRequest();
-  console.log(prompt.value);
   router.push(`/planner/${id}`);
 };
 

@@ -23,21 +23,18 @@ const isLoading = ref(false);
 onMounted(async () => {
     isLoading.value = true;
     try {
-
-        console.log(isLoading.value);
         const response = await fetch(`${baseURL}/v1/planners/${id}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
+        
         data.value = jsonResponse;
     } catch (error) {
         console.error(error);
     } finally {
         isLoading.value = false;
     }
-    console.log(data.value);
 });
 // Compute the filtered data based on the fetched data
 const filteredData = computed(() => {

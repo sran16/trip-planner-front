@@ -30,8 +30,6 @@ const sendRequest = async () => {
         });
 
         const data = await response.json();
-        console.log(data);
-
         // Return the updated planner ID
         return data.id;
     } catch (error) {
@@ -53,8 +51,6 @@ const handleSubmit = async (event) => {
 
     // Emit the 'update-end' event
     emit('update-end');
-
-    console.log(prompt.value);
 
     // Redirect to the updated planner page and refresh the page
 

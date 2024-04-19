@@ -17,7 +17,6 @@ onMounted(async () => {
     } catch (error) {
         console.error(error);
     }
-    console.log(data.value);
 });
 
 function redirectToPlanner(plannerId) {
