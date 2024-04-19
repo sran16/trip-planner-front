@@ -1,110 +1,115 @@
 <script setup>
 </script>
 <template>
-    <div class="container">
-
-
-        <div class="spinner1">
-            <div class="spinner-item"></div>
+    <div class="row ">
+        <div class="span">
+            <div class="location_indicator">
+            </div>
         </div>
-
-        <div class="spinner2">
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-        </div>
-
-        <div class="spinner">
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-        </div>
-
-        <div class="spinner">
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-        </div>
-
-
     </div>
 </template>
 <style scoped>
-:root {
-    --size: 75px;
-    --clr-bg: #272324;
-    --clr1: #bbbb88;
-    --clr2: #ccc68d;
-    --clr3: #eedd99;
-    --clr4: #eec290;
-    --clr5: #eeaa88;
-}
-
-*,
-*::before,
-*::after {
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: var(--clr-bg);
-    display: grid;
-    place-items: center;
+
+.row {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #242321;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.container {
-    margin-top: 7rem;
-    margin-bottom: 7rem;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    place-items: center;
-    gap: 7rem;
+.span {
+    width: 100vw;
+    height: 15vh;
+    padding: 50vh 0;
 }
 
 
-.spinner:nth-child(4) {
-    --animation-duration: 1150ms;
+/*Location indicator */
+.location_indicator {
+    position: relative;
+    z-index: 1;
+    left: -9px;
+}
 
-    .spinner-item {
-        --item-size: calc(var(--size) / 4);
-        width: var(--item-size);
-        height: var(--item-size);
-        display: inline-block;
-        margin: 0 3px;
-        border-radius: 50%;
-        border: 4px solid var(--clr-spinner);
-        animation: spinner4 var(--animation-duration) ease-in-out infinite;
+.location_indicator:before,
+.location_indicator:after {
+    position: absolute;
+    content: "";
+}
 
-        @keyframes spinner4 {
+.location_indicator:before {
+    width: 50px;
+    height: 50px;
+    border-radius: 100% 100% 100% 0;
+    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 1);
+    -webkit-animation: mapping 1s linear infinite;
+    -moz-animation: mapping 1s linear infinite;
+    animation: mapping 1s linear infinite;
+    -webkit-transform: rotate(-46deg);
+    -moz-transform: rotate(-46deg);
+    transform: rotate(-46deg);
+}
 
-            0%,
-            100% {
-                transform: translateY(75%);
-            }
+.location_indicator:after {
+    width: 80px;
+        height: 10px;
+        border-radius: 100%;
+        left: 46%;
+        background-color: #6D695E;
+        top: 9vh;
+        z-index: -1;
+}
 
-            50% {
-                transform: translateY(-75%);
-            }
-        }
+@-webkit-keyframes mapping {
+    0% {
+        top: 0;
     }
 
-    .spinner-item:nth-child(1) {
-        --clr-spinner: var(--clr5);
-        animation-delay: calc(var(--animation-duration) / 6 * -1);
+    50% {
+        top: -5px;
     }
 
-    .spinner-item:nth-child(2) {
-        --clr-spinner: var(--clr3);
-        animation-delay: calc(var(--animation-duration) / 6 * -2);
+    100% {
+        top: 0;
+    }
+}
+
+@-moz-keyframes mapping {
+    0% {
+        top: 0;
     }
 
-    .spinner-item:nth-child(3) {
-        --clr-spinner: var(--clr1);
-        animation-delay: calc(var(--animation-duration) / 6 * -3);
+    50% {
+        top: -5px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@-keyframes mapping {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -5px;
+    }
+
+    100% {
+        top: 0;
     }
 }
 </style>
