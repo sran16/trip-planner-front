@@ -2,12 +2,15 @@
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Loading from '@/components/Loading.vue';
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 const prompt = ref('');
 const router = useRouter();
 
+const isLoading = ref(false);
 const sendRequest = async () => {
   try {
+    isLoading.value = true;
     const response = await fetch(`${baseURL}/v1/planners`, {
       method: 'POST',
       headers: {
@@ -20,6 +23,8 @@ const sendRequest = async () => {
     return data.id;
   } catch (error) {
     console.error(error);
+  } finally {
+    isLoading.value = false;
   }
 };
 
@@ -33,54 +38,17 @@ const handleSubmit = async (event) => {
 </script>
 
 <template>
-  <div class="box">
+  <div v-if="isLoading">
+    <Loading />
+  </div>
+  <div v-else class="box">
     <form @submit="handleSubmit">
       <textarea type="text" id="prompt" v-model="prompt" required></textarea>
       <div class="buttons">
         <button class="button-submit" type="submit">C'est parti</button>
-        <button class="button-exemple" @click="router.push(`/planner/34cc68bd-132e-4a58-8512-d3e4b25b4cd0`)">Voir un
+        <button class="button-exemple" @click="router.push(`/planner/4fc9fcde-486a-4ca1-b8ef-0ef1d676648d`)">Voir un
           exemple</button>
       </div>
     </form>
   </div>
 </template>
-
-<style scoped>
-#prompt {
-  background-color: #242321;
-  border: 1px solid #6D695E;
-  border-radius: 17px;
-  height: 14vh;
-  width: 80vw;
-  margin-bottom: 16px;
-  color: #ffffff;
-}
-
-.box {
-  display: flex;
-  justify-content: center;
-}
-
-button {
-  border-radius: 8px;
-  color: #6D695E;
-  margin-right: 16px;
-  padding: 8px 16px;
-}
-
-.button-submit {
-  background-color: #6D695E;
-  color: #CECECE;
-}
-
-.button-exemple {
-  background-color: transparent;
-  border: 1px solid #6D695E;
-  color: #ffffff;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-}
-</style>

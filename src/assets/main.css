@@ -12,6 +12,7 @@
 @font-face {
   font-family: "lora";
   src: url("./fonts/Lora-Bold.ttf") format("woff");
+  src: url("./fonts/Lora-SemiBold.ttf") format("woff");
 }
 
 body {
@@ -20,4 +21,48 @@ body {
   font-family: "inter", sans-serif;
   /* padding: 0 8px; */
   margin: 0;
+}
+
+/* style Box Prompt + Update  */
+
+#prompt {
+  background-color: #242321;
+  border: 1px solid #6d695e;
+  border-radius: 17px;
+  height: 14vh;
+  width: 80vw;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+textarea#prompt {
+  text-align: start;
+  padding: 12px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  border-radius: 8px;
+  color: #6d695e;
+  margin-right: 16px;
+  padding: 8px 16px;
+}
+
+.button-submit {
+  background-color: #6d695e;
+  color: #cecece;
+}
+
+.button-exemple {
+  background-color: transparent;
+  border: 1px solid #6d695e;
+  color: #ffffff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
 }

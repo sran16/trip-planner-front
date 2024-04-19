@@ -7,7 +7,7 @@ const router = useRouter();
 
 const sendRequest = async () => {
     try {
-        const id = router.currentRoute.value.params.id; 
+        const id = router.currentRoute.value.params.id;
         const response = await fetch(`${baseURL}/v1/planners/${id}`, {
             method: 'PATCH',
             headers: {
@@ -27,7 +27,7 @@ const handleSubmit = async (event) => {
     event.preventDefault();
     const id = await sendRequest();
     console.log(prompt.value);
-    router.push(`/planner/${id}`);
+    router.push(`/planner/${id}`).then(() => router.go());
 };
 </script>
 
@@ -37,8 +37,7 @@ const handleSubmit = async (event) => {
             <textarea type="text" id="prompt" v-model="prompt" required></textarea>
             <div class="buttons">
                 <button class="button-submit" type="submit">C'est parti</button>
-                <button class="button-exemple"
-                    @click="router.push(`/planner/34cc68bd-132e-4a58-8512-d3e4b25b4cd0`)">Voir un exemple</button>
+                <button class="button-exemple" @click="router.push(`/`)">Voir l'historique</button>
             </div>
         </form>
     </div>

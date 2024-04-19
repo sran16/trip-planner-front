@@ -23,25 +23,39 @@ onMounted(async () => {
 function redirectToPlanner(plannerId) {
     router.push(`/planner/${plannerId}`);
 }
+function truncatePrompt(prompt) {
+    const maxLength = 40;
+    if (prompt.length > maxLength) {
+        return prompt.substring(0, maxLength) + '...';
+    }
+    return prompt;
+}
+
 </script>
 
 <template>
     <div>
         <h4>Derniers itinéraires</h4>
         <div class="list-history" v-for="(item) in data" @click="redirectToPlanner(item.id)">
-            <p>{{ item.prompt }}</p>
+            <p class="prompt">{{ truncatePrompt(item.prompt) }}</p>
             <img :src="vector" alt="icon-voir-pls" />
         </div>
     </div>
 </template>
 
 <style scoped>
+.prompt {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .list-history {
     background-color: #242321;
     border: 1px solid #6D695E;
     border-radius: 8px;
     width: 85vw;
-    padding:  8px;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
@@ -49,6 +63,9 @@ function redirectToPlanner(plannerId) {
 
 p {
     margin: 4px;
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
 }
 
 h4 {

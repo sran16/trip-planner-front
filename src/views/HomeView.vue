@@ -10,20 +10,23 @@ import Loading from '@/components/Loading.vue';
 
 <template>
   <main>
-    <Landing/>
-    <PromptBox/>
-    <PlannerList/>
+    <Landing />
+    <PromptBox />
+    <PlannerList />
 
 
-  </main>
+  </main :class="{ 'isLoading': isLoading }">
 </template>
 <style scoped>
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   margin: 0;
+}
+
+main.isLoading {
+    display: none;
 }
 </style>
