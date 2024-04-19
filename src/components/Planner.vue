@@ -13,7 +13,11 @@ const data = reactive({ value: null });
 const router = useRouter();
 const route = useRoute();
 const id = route.params.id;
+
+// Create a ref to control the visibility of the update prompt
+
 const showUpdatePrompt = ref(false);
+// Create a ref to track the loading state
 const isLoading = ref(false);
 
 onMounted(async () => {
@@ -35,7 +39,7 @@ onMounted(async () => {
     }
     console.log(data.value);
 });
-
+// Compute the filtered data based on the fetched data
 const filteredData = computed(() => {
     if (!data.value) {
         return null;
@@ -43,28 +47,30 @@ const filteredData = computed(() => {
     const planner = data.value.id === id ? data.value : null;
     return planner;
 });
+// Toggle the visibility of the update prompt
 const toggleUpdatePrompt = () => {
     showUpdatePrompt.value = !showUpdatePrompt.value;
 };
-const updateData = (updatedData) => {
-    data.value = updatedData;
-    showUpdatePrompt.value = false;
-    toggleUpdatePrompt();
-};
+
 </script>
 <template>
     <div class="planner">
+        <!-- Show loading component if data is still loading -->
         <div v-if="isLoading">
             <Loading />
         </div>
+        <!-- Show planner data if it exists -->
         <div v-else-if="filteredData">
             <div class="prompt-update">
                 <h4>{{ filteredData.prompt }}</h4>
                 <div class="update-icon">
+                    <!-- Toggle the update prompt on click -->
                     <img @click="toggleUpdatePrompt" class="img-update" :src="update" alt="icon-update" />
+                    <!-- Redirect to home page on click -->
                     <img class="img-update" :src="history" alt="icon-history" @click="router.push(`/`)" />
                 </div>
             </div>
+            <!-- Show the update prompt component if update prompt is visible -->
             <UpdatePrompt v-if="showUpdatePrompt" @update-start="isLoading = true" @update-end="isLoading = false" />
             <h5>Itinéraire</h5>
             <ul>
@@ -86,7 +92,6 @@ const updateData = (updatedData) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 8px; */
     border-radius: 8px;
     margin-bottom: 8px;
 }
